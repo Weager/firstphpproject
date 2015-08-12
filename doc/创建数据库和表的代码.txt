@@ -1,0 +1,65 @@
+CREATE DATABASE if not exists project;            //创建项目数据库
+
+
+
+//创建用户注册信息表
+CREATE TABLE if not exists reginfo
+(userid integer(10) primary key not null auto_increment,
+ username varchar(20) not null unique,
+ email varchar(30) not null,
+ password varchar(30) not null,
+ password_s varchar(30) not null,
+ m_qq tinyint(13),
+ regdate datetime not null,
+ last_revdate datetime not null,
+is_login tinyint not null default 0)ENGINE=MyISAM;
+
+
+//创建用户基本信息表
+
+CREATE TABLE if not exists meminfo
+(userid integer(11) primary key not null auto_increment,
+ username varchar(20) not null unique,
+ truename varchar(20) default '',
+ sex tinyint not null,
+ age tinyint not null,
+ last_update_time datetime not null,
+ birthday date,
+ address varchar(100) default '',
+ mobile varchar(13) default '',
+ education varchar(30) default '',
+ career varchar(30) default '',
+ height tinyint(6) not null,
+ weight tinyint(6) not null)ENGINE=MyISAM;
+
+
+//创建用户运动数据表
+
+CREATE TABLE if not exists sportdata
+(userid integer(10) primary key not null auto_increment,
+ username varchar(20) not null unique,
+ hourstep integer(10) not null,
+ hourdistance integer(10) not null,
+ hourheat integer(10) not null,
+ totalstep integer(20) not null,
+ totaldistance integer(20) not null,
+ totalheat integer(20) not null,
+ is_well tinyint(3) not null)ENGINE=MyISAM;
+
+
+//用户体质测评表
+
+CREATE TABLE if not exists evaluate
+(userid integer(10) primary key not null auto_increment,
+ username varchar(20) not null unique,
+ height tinyint(6) not null,
+ weight tinyint(6) not null,
+ capacity integer(8) not null,
+ blood integer(8) not null,
+ meters_short integer(4) not null,
+ meters_medium integer(4) not null,
+ meters_max integer(4) not null,
+ push_up integer(4) not null,
+ is_state tinyint(3) not null)ENGINE=MyISAM;
+
+
